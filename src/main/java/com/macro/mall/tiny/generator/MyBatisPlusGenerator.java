@@ -71,6 +71,9 @@ public class MyBatisPlusGenerator {
         String url = props.getStr("dataSource.url");
         String username = props.getStr("dataSource.username");
         String password = props.getStr("dataSource.password");
+        System.out.println(props);
+        System.out.println(username);
+        System.out.println(password);
         return new DataSourceConfig.Builder(url,username,password)
                 .dbQuery(new MySqlQuery())
                 .build();

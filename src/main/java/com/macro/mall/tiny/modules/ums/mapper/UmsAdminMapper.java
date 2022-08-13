@@ -16,9 +16,9 @@ import java.util.List;
  */
 public interface UmsAdminMapper extends BaseMapper<UmsAdmin> {
 
-    /**
-     * 获取资源相关用户ID列表
-     */
-    List<Long> getAdminIdList(@Param("resourceId") Long resourceId);
+	/**
+	 * 获取资源相关用户ID列表
+	 */
+	List<Long> getAdminIdList(@Param("resourceId") Long resourceId);
 
 }
