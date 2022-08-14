@@ -20,10 +20,12 @@ import java.util.Date;
 public class AmsActivityServiceImpl extends ServiceImpl<AmsActivityMapper, AmsActivity> implements AmsActivityService {
 	@Override
 	public boolean create(AmsActivity activity) {
+		activity.setCreateTime(new Date());
+		activity.setModifyTime(new Date());
 		/*role.setCreateTime(new Date());
 		role.setAdminCount(0);
 		role.setSort(0);
 		return save(role);*/
-		return true;
+		return save(activity);
 	}
 }

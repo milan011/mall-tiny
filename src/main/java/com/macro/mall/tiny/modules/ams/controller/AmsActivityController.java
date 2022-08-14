@@ -1,6 +1,8 @@
 package com.macro.mall.tiny.modules.ams.controller;
 
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.macro.mall.tiny.common.api.CommonPage;
 import com.macro.mall.tiny.common.api.CommonResult;
 import com.macro.mall.tiny.modules.ams.model.AmsActivity;
 import com.macro.mall.tiny.modules.ams.service.AmsActivityService;
@@ -9,11 +11,9 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 /**
  * <p>
@@ -44,7 +44,22 @@ public class AmsActivityController {
 			return CommonResult.success(null);
 		}
 		return CommonResult.failed();
-
 	}
+
+	@ApiOperation("根据ID获取活动详情")
+	@RequestMapping(value = "/getInfo/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public CommonResult<AmsActivity> getItem(@PathVariable Long id) {
+		AmsActivity amsActivity = amsActivityService.getById(id);
+		return CommonResult.success(amsActivity);
+	}
+
+	/*@ApiOperation("分页获取活动列表")
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	@ResponseBody
+	public CommonResult<CommonPage<AmsActivity>> list() {
+			Page<AmsActivity> activityList = amsActivityService.list();
+			return CommonResult.success(CommonPage.restPage(activityList));
+	}*/
 }
 
