@@ -1,5 +1,9 @@
 package com.macro.mall.tiny.modules.ams.service.impl;
 
+import cn.hutool.core.util.StrUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.macro.mall.tiny.modules.ams.model.AmsActivity;
 import com.macro.mall.tiny.modules.ams.mapper.AmsActivityMapper;
 import com.macro.mall.tiny.modules.ams.service.AmsActivityService;
@@ -27,5 +31,16 @@ public class AmsActivityServiceImpl extends ServiceImpl<AmsActivityMapper, AmsAc
 		role.setSort(0);
 		return save(role);*/
 		return save(activity);
+	}
+
+	@Override
+	public Page<AmsActivity> list(String keyword, Integer pageSize, Integer pageNum) {
+		Page<AmsActivity> page = new Page<>(pageNum,pageSize);
+		QueryWrapper<AmsActivity> wrapper = new QueryWrapper<>();
+		LambdaQueryWrapper<AmsActivity> lambda = wrapper.lambda();
+		if(StrUtil.isNotEmpty(keyword)){
+			lambda.like(AmsActivity::getActivityName,keyword);
+		}
+		return page(page,wrapper);
 	}
 }

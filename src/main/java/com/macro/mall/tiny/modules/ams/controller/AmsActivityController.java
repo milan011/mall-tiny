@@ -6,6 +6,7 @@ import com.macro.mall.tiny.common.api.CommonPage;
 import com.macro.mall.tiny.common.api.CommonResult;
 import com.macro.mall.tiny.modules.ams.model.AmsActivity;
 import com.macro.mall.tiny.modules.ams.service.AmsActivityService;
+import com.macro.mall.tiny.modules.ums.model.UmsRole;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -54,12 +55,23 @@ public class AmsActivityController {
 		return CommonResult.success(amsActivity);
 	}
 
-	/*@ApiOperation("分页获取活动列表")
+	@ApiOperation("分页获取活动列表")
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	@ResponseBody
-	public CommonResult<CommonPage<AmsActivity>> list() {
-			Page<AmsActivity> activityList = amsActivityService.list();
+	/*public CommonResult<CommonPage<AmsActivity>> list(
+		@RequestParam(value = "keyword", required = false) String keyword,
+		@RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
+		@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
+			Page<AmsActivity> activityList = amsActivityService.list(keyword, pageSize, pageNum);
 			return CommonResult.success(CommonPage.restPage(activityList));
 	}*/
+
+	public CommonResult<CommonPage<AmsActivity>> list(
+		@RequestParam(value = "keyword", required = false) String keyword,
+		@RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
+		@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
+		Page<AmsActivity> amsActivityList = amsActivityService.list(keyword, pageSize, pageNum);
+		return CommonResult.success(CommonPage.restPage(amsActivityList));
+	}
 }
 
