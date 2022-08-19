@@ -9,7 +9,6 @@ import com.macro.mall.tiny.modules.ams.mapper.AmsActivityMapper;
 import com.macro.mall.tiny.modules.ams.service.AmsActivityService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
-
 import java.util.Date;
 
 /**
@@ -40,6 +39,7 @@ public class AmsActivityServiceImpl extends ServiceImpl<AmsActivityMapper, AmsAc
 		LambdaQueryWrapper<AmsActivity> lambda = wrapper.lambda();
 		if(StrUtil.isNotEmpty(keyword)){
 			lambda.like(AmsActivity::getActivityName,keyword);
+			lambda.orderByDesc(AmsActivity::getId);
 		}
 		return page(page,wrapper);
 	}

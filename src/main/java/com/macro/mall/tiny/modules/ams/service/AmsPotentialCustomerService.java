@@ -2,6 +2,7 @@ package com.macro.mall.tiny.modules.ams.service;
 
 import com.macro.mall.tiny.modules.ams.model.AmsPotentialCustomer;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>
@@ -12,5 +13,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2022-08-13
  */
 public interface AmsPotentialCustomerService extends IService<AmsPotentialCustomer> {
-
+	/**
+	 * 添加活动客户
+	 */
+	boolean create(AmsPotentialCustomer amsPotentialCustomer);
 }

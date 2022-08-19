@@ -3,7 +3,6 @@ package com.macro.mall.tiny.modules.ams.service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.macro.mall.tiny.modules.ams.model.AmsActivity;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.macro.mall.tiny.modules.ums.model.UmsRole;
 
 /**
  * <p>
