@@ -1,6 +1,6 @@
 package com.macro.mall.tiny.modules.ams.controller;
 
-
+import cn.hutool.core.map.MapUtil;
 import com.macro.mall.tiny.common.api.CommonResult;
 import com.macro.mall.tiny.modules.ams.model.AmsActivitySign;
 import com.macro.mall.tiny.modules.ams.service.AmsActivitySignService;
@@ -8,6 +8,8 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 /**
  * <p>
@@ -28,7 +30,7 @@ public class AmsActivitySignController {
 	@RequestMapping(value = "/sign", method = RequestMethod.POST)
 	@ResponseBody
 	public CommonResult<?> sign(@RequestBody AmsActivitySign amsActivitySign) {
-
+		System.out.println(amsActivitySign);
 		boolean success = amsActivitySignService.create(amsActivitySign);
 		if (success) {
 			return CommonResult.success(null);

@@ -2,7 +2,6 @@ package com.macro.mall.tiny.modules.ams.service;
 
 import com.macro.mall.tiny.modules.ams.model.AmsPotentialCustomer;
 import com.baomidou.mybatisplus.extension.service.IService;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>

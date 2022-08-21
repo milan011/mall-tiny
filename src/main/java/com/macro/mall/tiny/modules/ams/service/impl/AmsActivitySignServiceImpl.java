@@ -1,7 +1,9 @@
 package com.macro.mall.tiny.modules.ams.service.impl;
 
+import cn.hutool.core.util.RandomUtil;
 import com.macro.mall.tiny.modules.ams.model.AmsActivitySign;
 import com.macro.mall.tiny.modules.ams.mapper.AmsActivitySignMapper;
+import com.macro.mall.tiny.modules.ams.model.AmsPotentialCustomer;
 import com.macro.mall.tiny.modules.ams.service.AmsActivityService;
 import com.macro.mall.tiny.modules.ams.service.AmsActivitySignService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -27,6 +29,14 @@ public class AmsActivitySignServiceImpl extends ServiceImpl<AmsActivitySignMappe
 	AmsPotentialCustomerService amsPotentialCustomerService;
 	@Override
 	public boolean create(AmsActivitySign activitySign) {
+		AmsPotentialCustomer amsPotentialCustomer = new AmsPotentialCustomer();
+		amsPotentialCustomer.setCustomerName(activitySign.getCustomerName());
+		amsPotentialCustomer.setCustomerPhone(activitySign.getCustomerPhone());
+		amsPotentialCustomerService.create(amsPotentialCustomer);
+		System.out.println(amsPotentialCustomer.getId());
+		System.out.println(amsPotentialCustomer);
+		activitySign.setSignCode(RandomUtil.randomStringUpper(6));
+		activitySign.setCustomerId(amsPotentialCustomer.getId());
 		activitySign.setCreateTime(new Date());
 		activitySign.setModifyTime(new Date());
 		return save(activitySign);
