@@ -65,7 +65,8 @@ public class UmsMenuServiceImpl extends ServiceImpl<UmsMenuMapper,UmsMenu>implem
 	@Override
 	public List<UmsMenuNode> treeList() {
 		List<UmsMenu> menuList = list();
-		List<UmsMenuNode> result = menuList.stream()
+		List<UmsMenuNode> result;
+		result = menuList.stream()
 			.filter(menu -> menu.getParentId().equals(0L))
 			.map(menu -> covertMenuNode(menu, menuList)).collect(Collectors.toList());
 		return result;

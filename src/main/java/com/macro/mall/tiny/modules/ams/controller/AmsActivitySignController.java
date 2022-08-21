@@ -35,7 +35,7 @@ public class AmsActivitySignController {
 		if (success) {
 			return CommonResult.success(null);
 		}
-		return CommonResult.failed();
+		return CommonResult.failed("已经报名该活动le");
 	}
 
 }

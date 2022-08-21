@@ -15,5 +15,5 @@ public interface AmsPotentialCustomerService extends IService<AmsPotentialCustom
 	/**
 	 * 添加活动客户
 	 */
-	boolean create(AmsPotentialCustomer amsPotentialCustomer);
+	AmsPotentialCustomer create(AmsPotentialCustomer amsPotentialCustomer);
 }
