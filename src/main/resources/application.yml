@@ -59,4 +59,4 @@ secure:
       - /admin/register
       - /admin/info
       - /admin/logout
-      - /ams/amsActivity/test
+      - /ams/amsActivity/*

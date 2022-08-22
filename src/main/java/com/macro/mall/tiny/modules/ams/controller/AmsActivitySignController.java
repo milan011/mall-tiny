@@ -1,6 +1,5 @@
 package com.macro.mall.tiny.modules.ams.controller;
 
-import cn.hutool.core.map.MapUtil;
 import com.macro.mall.tiny.common.api.CommonResult;
 import com.macro.mall.tiny.modules.ams.model.AmsActivitySign;
 import com.macro.mall.tiny.modules.ams.service.AmsActivitySignService;
@@ -9,7 +8,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
 
 /**
  * <p>
@@ -33,7 +31,7 @@ public class AmsActivitySignController {
 		System.out.println(amsActivitySign);
 		boolean success = amsActivitySignService.create(amsActivitySign);
 		if (success) {
-			return CommonResult.success(null);
+			return CommonResult.success(amsActivitySign.getSignCode());
 		}
 		return CommonResult.failed("已经报名该活动le");
 	}
